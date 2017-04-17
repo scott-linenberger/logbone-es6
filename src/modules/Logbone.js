@@ -1,5 +1,8 @@
 import UndefinedException from './Undefined.exception';
 
+/**
+ * Logger class
+ */
 class Logger {
   /**
    * Constructs a new Logger object with the provided loggername.
@@ -34,6 +37,11 @@ class Logger {
     };
   }
 
+  /**
+   * Creates a format string that gets tacked onto the console output when logging methods
+   * are called.
+   * @param {string} command - console command string: log, info, debug, etc..
+   */
   getLoggerFormat(command) {
     /* throw an exception if command isn't defined */
     if (command === undefined || command.length === 0) {
@@ -109,7 +117,15 @@ class Logger {
   }
 }
 
+/**
+ * Logbone is a logger factory used to get an instance of a Logbone Logger.
+ * To get a new logger call `Logbone.getLogger(<loggername>)`
+ */
 export default class Logbone {
+  /**
+   * Method that returns a new instance of Logger.
+   * @param {string} loggername - prefix used when logging to the console.
+   */
   static getLogger(loggername) {
     return new Logger(loggername);
   }
