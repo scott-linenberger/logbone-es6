@@ -2,7 +2,7 @@
   "name": "logbone-es6",
   "version": "0.0.3",
   "description": "An ES6 module-based version of Logbone",
-  "main": "src/modules/Logbone.js",
+  "main": "dist/Logbone.js",
   "scripts": {
     "build": "webpack"
   },
@@ -11,9 +11,6 @@
     "url": "git+https://github.com/scott-linenberger/logbone-es6.git"
   },
   "keywords": [],
-  "files": [
-    "./dist/Logbone.js"
-  ],
   "author": "Scott Linenberger",
   "license": "ISC",
   "bugs": {
