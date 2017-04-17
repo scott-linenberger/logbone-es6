@@ -11,9 +11,9 @@
     "url": "git+https://github.com/scott-linenberger/logbone-es6.git"
   },
   "keywords": [],
-  "directories": {
-    "lib": "dist/"
-  },
+  "files": [
+    "./dist/Logbone.js"
+  ],
   "author": "Scott Linenberger",
   "license": "ISC",
   "bugs": {
