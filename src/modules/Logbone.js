@@ -1,5 +1,14 @@
 import UndefinedException from './Undefined.exception';
 
+const LEVELS = {
+  LOG: 0,
+  INFO: 1,
+  DEBUG: 2,
+  WARN: 3,
+  ERROR: 4,
+  SILENT: 5,
+};
+
 /**
  * Logger class
  */
@@ -8,21 +17,48 @@ class Logger {
    * Constructs a new Logger object with the provided loggername.
    * @param {string} loggername - name to be associated with the logger.
    */
-  constructor(loggername) {
+  constructor(loggername, logginglevel) {
     /* throw if the loggername is undefiend */
     if (loggername === undefined) {
       throw new UndefinedException('loggername');
+    }
+
+    /* DEFAULT LOG LEVEL TO LOWEST/DEBUG */
+    if (!logginglevel || logginglevel < LEVELS.LOG || logginglevel > LEVELS.SILENT) {
+      this.logginglevel = 0;
+    } else {
+      this.logginglevel = logginglevel;
     }
 
     /* assign instance vars */
     this.loggername = loggername;
 
     /* init logger functions */
-    this.log = this.getLoggerFunction('log');
-    this.info = this.getLoggerFunction('info');
-    this.debug = this.getLoggerFunction('debug');
-    this.warn = this.getLoggerFunction('warn');
-    this.error = this.getLoggerFunction('error');
+    /* loggers outside of defined level get empty closures */
+    this.log =
+      this.logginglevel <= LEVELS.LOG ?
+        this.getLoggerFunction('log') :
+        () => { };
+
+    this.info =
+      this.logginglevel <= LEVELS.INFO ?
+        this.getLoggerFunction('info') :
+        () => { };
+
+    this.debug =
+      this.logginglevel <= LEVELS.DEBUG ?
+        this.getLoggerFunction('debug') :
+        () => { };
+
+    this.warn =
+      this.logginglevel <= LEVELS.WARN ?
+        this.getLoggerFunction('warn') :
+        () => { };
+
+    this.error =
+      this.logginglevel <= LEVELS.ERROR ?
+        this.getLoggerFunction('error') :
+        () => { };
   }
 
   /**
