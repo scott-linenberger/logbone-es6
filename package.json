@@ -1,6 +1,6 @@
 {
   "name": "logbone-es6",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "An ES6 module-based version of Logbone",
   "main": "dist/Logbone.js",
   "scripts": {
