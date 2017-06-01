@@ -162,7 +162,7 @@ export default class Logbone {
    * Method that returns a new instance of Logger.
    * @param {string} loggername - prefix used when logging to the console.
    */
-  static getLogger(loggername) {
-    return new Logger(loggername);
+  static getLogger(loggername, level) {
+    return new Logger(loggername, level);
   }
 }
