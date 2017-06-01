@@ -36,29 +36,29 @@ class Logger {
     /* init logger functions */
     /* loggers outside of defined level get empty closures */
     this.log =
-      this.logginglevel <= LEVELS.LOG ?
-        this.getLoggerFunction('log') :
-        () => { };
+      this.logginglevel > LEVELS.LOG ?
+        () => { } :
+        this.getLoggerFunction('log');
 
     this.info =
-      this.logginglevel <= LEVELS.INFO ?
-        this.getLoggerFunction('info') :
-        () => { };
+      this.logginglevel > LEVELS.INFO ?
+        () => { } :
+        this.getLoggerFunction('info');
 
     this.debug =
-      this.logginglevel <= LEVELS.DEBUG ?
-        this.getLoggerFunction('debug') :
-        () => { };
+      this.logginglevel > LEVELS.DEBUG ?
+        () => { } :
+        this.getLoggerFunction('debug');
 
     this.warn =
-      this.logginglevel <= LEVELS.WARN ?
-        this.getLoggerFunction('warn') :
-        () => { };
+      this.logginglevel > LEVELS.WARN ?
+        () => { } :
+        this.getLoggerFunction('warn');
 
     this.error =
-      this.logginglevel <= LEVELS.ERROR ?
-        this.getLoggerFunction('error') :
-        () => { };
+      this.logginglevel > LEVELS.ERROR ?
+        () => { } :
+        this.getLoggerFunction('error');
   }
 
   /**
